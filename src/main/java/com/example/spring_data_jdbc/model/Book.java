@@ -1,10 +1,10 @@
 package com.example.spring_data_jdbc.model;
 
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
 
 @Getter
 @Setter
@@ -12,7 +12,7 @@ import org.springframework.lang.NonNull;
 @NoArgsConstructor
 public class Book {
 
-    @NonNull
+    @Min(1900)
     private long id;
     private String title;
     private String author;
