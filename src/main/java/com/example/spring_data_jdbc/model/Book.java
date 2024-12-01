@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.NonNull;
 
 @Getter
 @Setter
@@ -11,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Book {
 
+    @NonNull
     private long id;
     private String title;
     private String author;

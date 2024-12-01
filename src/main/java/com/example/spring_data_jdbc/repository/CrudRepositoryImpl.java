@@ -1,6 +1,7 @@
 package com.example.spring_data_jdbc.repository;
 
 import com.example.spring_data_jdbc.model.Book;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -49,8 +50,13 @@ public class CrudRepositoryImpl implements CrudRepository<Book, Long> {
 
     @Override
     public Optional<Book> findById(Long id) {
-        String SELECT = "select id, title, author, publication_year from book where id = ?";
-        Book book = this.jdbcTemplate.queryForObject(SELECT, mapper, id);
+        Book book;
+        try {
+            String SELECT = "select id, title, author, publication_year from book where id = ?";
+            book = jdbcTemplate.queryForObject(SELECT, mapper, id);
+        } catch (EmptyResultDataAccessException e) {
+            book = null;
+        }
         return Optional.ofNullable(book);
     }
 

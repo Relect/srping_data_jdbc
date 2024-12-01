@@ -2,6 +2,7 @@ package com.example.spring_data_jdbc.controller;
 
 import com.example.spring_data_jdbc.model.Book;
 import com.example.spring_data_jdbc.service.BookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class BookController {
     }
 
     @PutMapping("/book")
-    public void updateBook(@RequestBody Book book) {
+    public void updateBook(@Valid @RequestBody Book book) {
         bookService.updateBook(book);
     }
 
