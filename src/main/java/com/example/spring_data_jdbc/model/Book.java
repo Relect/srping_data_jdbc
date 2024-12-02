@@ -12,9 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Book {
 
-    @Min(1900)
+    @Min(1)
     private long id;
     private String title;
     private String author;
+    @Min(1900)
     private int publicationYear;
 }
